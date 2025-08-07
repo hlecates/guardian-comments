@@ -24,7 +24,7 @@ The classifier was trained use the Jigsaw Toxic Comment Classification Challenge
 - insult
 - identity_hate
 
-# Architecture
+### Architecture
 
 The model uses a Bidirectional LSTM-based neural network with the following layers:
 1) Embedding(vocab_size + 1, 32, input_length=1800)
@@ -37,14 +37,14 @@ The model uses a Bidirectional LSTM-based neural network with the following laye
     - Dense(6, activation='sigmoid') for multi-label classification
 
 
-# Model Training
+### Model Training
 
 The project includes Jupyter notebooks for training and evaluating the toxicity detection model:
 
 - `src/train_toxicity.ipynb`: Train the model on the Jigsaw dataset
 - `src/predict_toxicity.py`: Standalone script for making predictions
 
-# Evaluation
+### Evaluation
 
 The model used in the application was trained for 3 epochs. It was then evaluated on the test set using standard mutli-label classification metrics:
 - Accuracy = 0.9935
@@ -62,7 +62,7 @@ The confusion matrix shown above corresponds to the "toxic" class, one of the si
 - True Positives (Bottom-right, 1,336): Toxic comments correctly identified as toxic.
 Overall, the model is conservative in labeling toxicity. It makes fewer false positives but at the cost of some false negatives.
 
-# Improvements
+### Improvements
 
 1) Class Imbalance Handling
     - The dataset is heavily skewed toward non-toxic labels.

@@ -262,7 +262,6 @@ deploy.sh
 # CUSTOM PROJECT FILES
 # ========================
 
-# Add your project-specific ignores below
-# Example:
-# /custom-folder/
-# *.custom-extension
+.gradio/
+
+example_frontend.html

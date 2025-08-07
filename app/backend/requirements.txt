@@ -1,0 +1,9 @@
+Flask
+flask-cors
+google-api-python-client
+joblib
+python-dotenv
+numpy
+tensorflow
+# Add your ML libs here to match the trained model (e.g., scikit-learn / torch / transformers)
+gunicorn 

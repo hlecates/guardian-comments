@@ -53,7 +53,9 @@ The model used in the application was trained for 3 epochs. It was then evaluate
 - Recall = 0.7224
 - F1-Score = 0.7833
 
-![Toxic Confusion Matrix](docs/confusion_matrix.png)
+<p align="center">
+  <img src="docs/confusion_matrix.png" alt="Toxic Confusion Matrix" width="300"/>
+</p>
 
 The confusion matrix shown above corresponds to the "toxic" class, one of the six toxicity labels. Each cell in the matrix provides a count of predictions:
 - True Negatives (Top-left, 14,232): Non-toxic comments correctly identified as non-toxic.

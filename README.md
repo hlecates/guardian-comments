@@ -57,6 +57,7 @@ The confusion matrix below above corresponds to the "toxic" class, one of the si
 - False Positives (Top-right, 234): Non-toxic comments incorrectly labeled as toxic.
 - False Negatives (Bottom-left, 169): Toxic comments incorrectly labeled as non-toxic.
 - True Positives (Bottom-right, 1,336): Toxic comments correctly identified as toxic.
+
 Overall, the model is conservative in labeling toxicity. It makes fewer false positives but at the cost of some false negatives.
 
 <p align="center">

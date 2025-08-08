@@ -1,72 +1,32 @@
-import { useEffect, useState } from "react";
-import { warmup, scoreTexts, scoreYouTube } from "./api";
+import { useEffect } from "react";
+import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { warmup } from "./api";
+import CommentPage from "./pages/CommentPage.jsx";
+import YoutubePage from "./pages/YoutubePage.jsx";
 
 export default function App() {
-  const [text, setText] = useState("");
-  const [yt, setYt] = useState("");
-  const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const location = useLocation();
 
   useEffect(() => { warmup(); }, []);
 
-  const onScoreText = async () => {
-    setLoading(true);
-    try {
-      const texts = text.split("\n").map(s => s.trim()).filter(Boolean);
-      setResult(await scoreTexts(texts));
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const onScoreYT = async () => {
-    setLoading(true);
-    try {
-      setResult(await scoreYouTube(yt, 300));
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div style={{maxWidth: 800, margin: "40px auto", fontFamily: "system-ui, sans-serif"}}>
-      <h2>Toxicity Scorer</h2>
+    <div className="app-container">
+      <header className="app-header">
+        <h1 className="app-title">Toxicity Scorer</h1>
+        <nav className="app-nav">
+          <Link className={location.pathname === "/comment" ? "nav-link active" : "nav-link"} to="/comment">Comment</Link>
+          <Link className={location.pathname === "/youtube" ? "nav-link active" : "nav-link"} to="/youtube">YouTube</Link>
+        </nav>
+      </header>
 
-      <section>
-        <h3>Paste comments</h3>
-        <textarea
-          rows={6}
-          value={text}
-          onChange={e => setText(e.target.value)}
-          style={{width:"100%"}}
-          placeholder="One comment per line"
-        />
-        <button onClick={onScoreText} disabled={loading}>Score Texts</button>
-      </section>
-
-      <section style={{marginTop: 24}}>
-        <h3>YouTube link</h3>
-        <input
-          value={yt}
-          onChange={e => setYt(e.target.value)}
-          style={{width:"100%"}}
-          placeholder="https://www.youtube.com/watch?v=..."
-        />
-        <button onClick={onScoreYT} disabled={loading}>Fetch & Score Comments</button>
-      </section>
-
-      {loading && <p>Scoring...</p>}
-
-      {result && (
-        <section style={{marginTop: 24}}>
-          <h3>Aggregate</h3>
-          <pre>{JSON.stringify(result.aggregate, null, 2)}</pre>
-          <h3>Per Comment</h3>
-          <pre style={{maxHeight: 400, overflow: "auto"}}>
-            {JSON.stringify(result.scores, null, 2)}
-          </pre>
-        </section>
-      )}
+      <main className="app-main">
+        <Routes>
+          <Route path="/comment" element={<CommentPage />} />
+          <Route path="/youtube" element={<YoutubePage />} />
+          <Route path="/" element={<Navigate to="/comment" replace />} />
+          <Route path="*" element={<Navigate to="/comment" replace />} />
+        </Routes>
+      </main>
     </div>
   );
 } 

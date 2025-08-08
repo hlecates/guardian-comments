@@ -1,0 +1,73 @@
+:root {
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --text: #0a0a0a;
+  --muted: #4b5563;
+  --primary: #2563eb;
+  --primary-600: #1d4ed8;
+  --border: #e5e7eb;
+  --surface: #f8fafc;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.app-container { max-width: 980px; margin: 0 auto; padding: 24px; }
+.app-header { display: flex; align-items: center; justify-content: space-between; margin: 12px 0 24px; }
+.app-title { margin: 0; font-size: 24px; letter-spacing: 0.3px; }
+.app-nav { display: flex; gap: 12px; }
+.nav-link { color: var(--muted); text-decoration: none; padding: 8px 12px; border-radius: 8px; border: 1px solid transparent; }
+.nav-link:hover { color: var(--text); background: rgba(0,0,0,0.05); border-color: var(--border); }
+.nav-link.active { background: rgba(37,99,235,0.12); color: var(--text); border-color: rgba(37,99,235,0.35); }
+
+.app-main { display: block; }
+
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.panel-title { margin: 0 0 6px; }
+.panel-subtitle { margin: 0 0 16px; color: var(--muted); }
+
+.input-text, .input-textarea { width: 100%; background: #ffffff; color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; outline: none; }
+.input-text:focus, .input-textarea:focus { border-color: rgba(37,99,235,0.6); box-shadow: 0 0 0 3px rgba(37,99,235,0.2); }
+
+.actions { margin-top: 12px; display: flex; gap: 10px; }
+.btn { background: var(--primary); color: white; border: 1px solid var(--primary-600); border-radius: 10px; padding: 10px 14px; cursor: pointer; font-weight: 600; }
+.btn:hover { background: var(--primary-600); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.alert { margin-top: 12px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); }
+.alert-error { background: rgba(220, 38, 38, 0.08); color: #991b1b; border-color: rgba(220, 38, 38, 0.25); }
+
+.results { margin-top: 20px; display: grid; gap: 16px; }
+.aggregate { background: var(--surface); border: 1px dashed var(--border); border-radius: 12px; padding: 12px; }
+.metric { display: flex; align-items: center; justify-content: space-between; }
+.metric-label { color: var(--muted); }
+.metric-value { font-weight: 700; color: var(--text); }
+
+.items { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 14px; }
+@media (min-width: 800px) { .items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.score-card { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+.score-header { display: flex; justify-content: flex-end; }
+.score-badge { font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--border); background: rgba(0,0,0,0.04); color: var(--text); }
+.score-badge[data-level="low"] { color: var(--success); border-color: rgba(22, 163, 74, 0.35); background: rgba(22, 163, 74, 0.08); }
+.score-badge[data-level="medium"] { color: var(--warning); border-color: rgba(217, 119, 6, 0.35); background: rgba(217, 119, 6, 0.08); }
+.score-badge[data-level="high"] { color: var(--danger); border-color: rgba(220, 38, 38, 0.35); background: rgba(220, 38, 38, 0.08); }
+
+.score-bar { position: relative; height: 8px; border-radius: 6px; background: #f1f5f9; overflow: hidden; margin: 8px 0 10px; }
+.score-bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, #16a34a 0%, #d97706 60%, #dc2626 100%); }
+
+.score-text { margin: 8px 0 10px; white-space: pre-wrap; color: var(--text); }
+
+.score-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; }
+.score-item { display: flex; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; }
+.score-label { color: var(--muted); font-size: 12px; }
+.score-value { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text); } 

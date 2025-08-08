@@ -6,17 +6,17 @@ A full-stack application for analyzing and detecting toxic comments using machin
 
 ```
 guardian-comments/
-├── app/                    # Main application code
+├── app/                   
 │   ├── backend/           # Flask backend server
 │   └── frontend/          # React frontend application
 ├── docs/                  # Documentation and examples
-├── src/                   # ML model training and evaluation
-└── jigsaw-toxic-comment-classification-challenge/  # Training data
+├── src/                   # Model training and evaluation
+└── jigsaw-toxic-comment-classification-challenge/ 
 ```
 
 ## Modeling
 
-The classifier was trained use the Jigsaw Toxic Comment Classification Challenge, sourced from a kaggle competition, and supprts mutli-lable classification for the following categories:
+The classifier was trained use the Jigsaw Toxic Comment Classification Challenge, sourced from a kaggle competition, and supprts mutli-label classification for the following categories:
 - toxic
 - severe_toxic
 - obscene
@@ -35,7 +35,6 @@ The model uses a Bidirectional LSTM-based neural network with the following laye
     - Dense(128, activation='relu') -> Dropout(0.3)
 4) Output Layer:
     - Dense(6, activation='sigmoid') for multi-label classification
-
 
 ### Model Training
 
@@ -59,7 +58,7 @@ The confusion matrix below above corresponds to the "toxic" class, one of the si
 - False Negatives (Bottom-left, 169): Toxic comments incorrectly labeled as non-toxic.
 - True Positives (Bottom-right, 1,336): Toxic comments correctly identified as toxic.
 
-Overall, the model is conservative in labeling toxicity. It makes fewer false positives but at the cost of some false negatives.
+Overall, the model is conservative in labeling toxicity. This means it is more likely to label non-toxic comments as toxic than toxic as non-toxic. This aspect of the model, although desirable to have no false positvies or negatives, seems better than having a reverse relationship. If applied to real-world scenario, such as monitoring a forum of familt friendly event, this would allow the developers to be the more confident that no toxic or obscene comments are made. 
 
 <p align="center">
   <img src="docs/confusion_matrix.png" alt="Toxic Confusion Matrix" width="400"/>
@@ -90,3 +89,8 @@ When analyzing comments, the system provides toxicity scores and classifications
 The application can analyze comments direct Youtube links via the Youtube Data API:
 
 ![Link Processing Example](docs/link_example.png)
+
+## Future Work
+- Refine and optimize the model
+- Allow for support from other platform link in addition to Youtube
+- Explore data surronding the comments labeled toxic: Do they get mroe like than non-toxic, are there certain reasons for higher toxic comment rates, etc.

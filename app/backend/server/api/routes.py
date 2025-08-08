@@ -32,7 +32,9 @@ def youtube_score():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
     if not comments:
-        return jsonify({"scores": [], "aggregate": {"mean_toxicity": 0.0}})
+        return jsonify({"scores": [], "aggregate": {"mean_toxicity": 0.0}, "items": []})
     scores = current_app.model_service.score(comments)
     agg = {"mean_toxicity": float(sum(s.get("toxic", 0.0) for s in scores) / len(scores))}
-    return jsonify({"scores": scores, "aggregate": agg}) 
+    items = [{"text": c, "scores": s} for c, s in zip(comments, scores)]
+    # Keep legacy fields for backward compatibility
+    return jsonify({"scores": scores, "aggregate": agg, "items": items}) 

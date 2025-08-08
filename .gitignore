@@ -264,10 +264,7 @@ deploy.sh
 
 .gradio/
 
-# Model files and directories
 model/
 src/model/
 *.h5
 *.pkl
-
-example_frontend.html

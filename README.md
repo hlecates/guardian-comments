@@ -36,7 +36,7 @@ The model uses a Bidirectional LSTM-based neural network with the following laye
 4) Output Layer:
     - Dense(6, activation='sigmoid') for multi-label classification
 
-### Model Training
+### Training
 
 The project includes Jupyter notebooks for training and evaluating the toxicity detection model:
 

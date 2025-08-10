@@ -16,7 +16,7 @@ guardian-comments/
 
 ## Modeling
 
-The classifier was trained use the Jigsaw Toxic Comment Classification Challenge, sourced from a kaggle competition, and supprts mutli-label classification for the following categories:
+The classifier was trained uses the Jigsaw Toxic Comment Classification Challenge, sourced from a kaggle competition, and supprts mutli-label classification for the following categories:
 - toxic
 - severe_toxic
 - obscene
@@ -58,7 +58,7 @@ The confusion matrix below above corresponds to the "toxic" class, one of the si
 - False Negatives (Bottom-left, 169): Toxic comments incorrectly labeled as non-toxic.
 - True Positives (Bottom-right, 1,336): Toxic comments correctly identified as toxic.
 
-Overall, the model is conservative in labeling toxicity. This means it is more likely to label non-toxic comments as toxic than toxic as non-toxic. This aspect of the model, although desirable to have no false positvies or negatives, seems better than having a reverse relationship. If applied to real-world scenario, such as monitoring a forum of familt friendly event, this would allow the developers to be the more confident that no toxic or obscene comments are made. 
+Overall, the model is conservative in labeling toxicity. This means it is more likely to label non-toxic comments as toxic than toxic as non-toxic. This aspect of the model, although desirable to have no false positvies or negatives, seems better than having a reverse relationship. If applied to real-world scenario, such as monitoring a forum or family friendly event, the conservative nature would allow developers to be the more confident that no toxic or obscene comments are made. 
 
 <p align="center">
   <img src="docs/confusion_matrix.png" alt="Toxic Confusion Matrix" width="400"/>
